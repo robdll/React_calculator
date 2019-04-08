@@ -3,15 +3,16 @@ import PropTypes from "prop-types";
 
 import styles from "./valueBtn.module.scss";
 
-const valueBtn = () => {
+const ValueBtn = (props) => {
   return (
     <>
-      <h1>valueBtn</h1>
+      <div className={styles.div}>{props.value}</div>
     </>
   );
 };
 
-valueBtn.defaultProps = {};
-valueBtn.propTypes = {};
+ValueBtn.propTypes = {
+  value: PropTypes.number.isRequired
+};
 
-export default valueBtn;
+export default ValueBtn;

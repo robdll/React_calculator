@@ -3,15 +3,15 @@ import PropTypes from "prop-types";
 
 import styles from "./display.module.scss";
 
-const display = () => {
+const Display = (props) => {
   return (
     <>
-      <h1>display</h1>
+      {props.value}
     </>
   );
 };
 
-display.defaultProps = {};
-display.propTypes = {};
+Display.defaultProps = {};
+Display.propTypes = {};
 
-export default display;
+export default Display;

@@ -3,15 +3,16 @@ import PropTypes from "prop-types";
 
 import styles from "./operatorBtn.module.scss";
 
-const operatorBtn = () => {
+const OperatorBtn = (props) => {
   return (
-    <>
-      <h1>operatorBtn</h1>
-    </>
+    <div className={styles.operator}>
+      {props.operator}
+    </div>
   );
 };
 
-operatorBtn.defaultProps = {};
-operatorBtn.propTypes = {};
+OperatorBtn.propTypes = {
+ value: PropTypes.string.isRequired
+};
 
-export default operatorBtn;
+export default OperatorBtn;
