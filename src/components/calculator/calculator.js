@@ -5,9 +5,9 @@ import styles from "./calculator.module.scss";
 
 const calculator = () => {
   return (
-    <>
-      <h1>calculator</h1>
-    </>
+      <section className={styles.calculator}>
+        
+      </section>
   );
 };
 
