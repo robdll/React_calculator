@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// import styles from "./display.module.scss";
+import styles from "./display.module.scss";
 
 const Display = (props) => {
     
   return (
-    <div>
+    <div className={styles.display}>
       {props.value}
     </div>
   );

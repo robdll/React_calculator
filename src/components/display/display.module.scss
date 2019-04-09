@@ -1,0 +1,6 @@
+.display {
+    background: #f5f6f6; /* Old browsers */
+    border-radius: 10px 10px 0 0;
+    background-image: linear-gradient(green, 10%, lightgreen);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='green', endColorstr='lightgreen', GradientType=0 ); /* IE6-9 */
+}
