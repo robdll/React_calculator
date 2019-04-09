@@ -6,7 +6,15 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 2fr repeat(5, 1fr);
     grid-gap: 5px;
+    max-width: 768px;
+    max-height: 753px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+
 }
+
+
 
 .displayContainer > div{
     display: flex;
@@ -26,14 +34,52 @@
     grid-column: 4 / -1;
     grid-row: 3 / -1;
     background: orange;
+    user-select: none;
 }
 
 
 .operatorBtn {
     cursor: pointer;
+    user-select: none;
 }
 
 .valueBtn {
     cursor: pointer;
     background: #aaa;
+    user-select: none;
+}
+
+.clearBtn {
+    background: tomato;
+    user-select: none;
+}
+
+
+@media (min-width: 768px) {
+    .resultContainer{
+        border-radius: 0 0 10px 0;
+    }
+
+    .displayContainer {
+        border-radius: 10px 10px 0 0;
+    }
+
+    .calculator > .valueBtn:nth-child(15) {
+        border-radius: 0 0 0 10px;
+    }
+
+    .calculator:before {
+        content: "";
+        position: absolute;
+        top: 150px;
+        left: 135px;
+        right: -135px;
+        bottom: 0;
+        background: rgba(0,0,0,.3);
+        border-radius: 10px;
+        transform: skew(-25deg);
+        filter: blur(15px);
+        z-index: -1;
+    }
+
 }
