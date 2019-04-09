@@ -12,7 +12,7 @@ const ValueBtn = (props) => {
 };
 
 ValueBtn.propTypes = {
-  value: PropTypes.number.isRequired
+  value: PropTypes.string.isRequired
 };
 
 export default ValueBtn;

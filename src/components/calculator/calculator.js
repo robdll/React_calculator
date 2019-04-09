@@ -8,10 +8,9 @@ import ValueBtn from '../valueBtn/valueBtn';
 
 const calculator = () => {
 
-  const display = <div className={styles.displayContainer}>
-      <Display />
+  const display = <div className={styles.displayContainer} >
+      <Display value={''} />
     </div>;
-
 
   return (
       <section className={styles.calculator}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import App from './App';
 import Calculator from './components/calculator/calculator';
 
