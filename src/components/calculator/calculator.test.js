@@ -38,4 +38,12 @@ it('buttons update display', () => {
   expect(wrapper.state()).toMatchObject({displayValue: '3' });
 });
 
+it('clear display on AC click', () => {
+  const wrapper = mount(<Calculator />);
+  wrapper.find('[value="3"]').simulate("click");
+  wrapper.find('[value="AC"]').simulate("click");
+  expect(wrapper.state()).toMatchObject({displayValue: '' });
+});
+
+
 

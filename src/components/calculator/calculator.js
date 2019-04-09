@@ -15,12 +15,18 @@ class calculator extends React.Component {
       displayValue: ''
     };
     this.handleClick = this.handleClick.bind(this);
+    this.clear = this.clear.bind(this);
   }
 
   handleClick(value) {
     const newState = { ...this.state };
     newState.displayValue += value;
     this.setState({displayValue: value})
+  }
+
+
+  clear() {
+    this.setState({displayValue: '' })
   }
 
   render() { 
@@ -34,10 +40,10 @@ class calculator extends React.Component {
 
         {display}
 
-        <ValueBtn parentStyle={styles.operatorBtn} value={'+'}/>
-        <ValueBtn parentStyle={styles.operatorBtn} value={'-'}/>
-        <ValueBtn parentStyle={styles.operatorBtn} value={'*'}/>
-        <ValueBtn parentStyle={styles.operatorBtn} value={'/'}/>
+        <ValueBtn handleClick={this.handleClick} parentStyle={styles.operatorBtn} value={'+'}/>
+        <ValueBtn handleClick={this.handleClick} parentStyle={styles.operatorBtn} value={'-'}/>
+        <ValueBtn handleClick={this.handleClick} parentStyle={styles.operatorBtn} value={'*'}/>
+        <ValueBtn handleClick={this.handleClick} parentStyle={styles.operatorBtn} value={'/'}/>
 
         <ValueBtn handleClick={this.handleClick} parentStyle={styles.valueBtn} value={'1'}/>
         <ValueBtn handleClick={this.handleClick} parentStyle={styles.valueBtn} value={'2'}/>
@@ -51,7 +57,7 @@ class calculator extends React.Component {
         <ValueBtn handleClick={this.handleClick} parentStyle={styles.valueBtn} value={'0'}/>
         <ValueBtn handleClick={this.handleClick} parentStyle={styles.valueBtn} value={'.'}/>
         
-        <ValueBtn parentStyle={styles.clearBtn} value={'AC'}/>
+        <ValueBtn handleClick={this.clear} parentStyle={styles.clearBtn} value={'AC'}/>
 
         <ValueBtn parentStyle={styles.resultContainer} value={'='}/>
 
