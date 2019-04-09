@@ -55,7 +55,7 @@ it('replace operator if already there', () => {
 });
 
 
-it('Do not allow double dots in values', () => {
+it('Allow dots only once', () => {
   const wrapper = mount(<Calculator />);
   wrapper.find('[value="2"]').simulate("click");
   wrapper.find('[value="."]').simulate("click");
@@ -63,5 +63,23 @@ it('Do not allow double dots in values', () => {
   wrapper.find('[value="."]').simulate("click");
   wrapper.find('[value="2"]').simulate("click");
   expect(wrapper.state()).toMatchObject({displayValue: '2.22' });
+});
+
+
+
+it('Properly evaluate expression', () => {
+  const wrapper = mount(<Calculator />);
+  wrapper.find('[value="2"]').simulate("click");
+  wrapper.find('[value="."]').simulate("click");
+  wrapper.find('[value="2"]').simulate("click");
+  wrapper.find('[value="."]').simulate("click");
+  wrapper.find('[value="2"]').simulate("click");
+  wrapper.find('[value="*"]').simulate("click");
+  wrapper.find('[value="1"]').simulate("click");
+  wrapper.find('[value="="]').simulate("click");
+  wrapper.find('[value="+"]').simulate("click");
+  wrapper.find('[value="1"]').simulate("click");
+  wrapper.find('[value="="]').simulate("click");
+  expect(wrapper.state()).toMatchObject({displayValue: '3.22' });
 });
 

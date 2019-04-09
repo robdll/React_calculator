@@ -16,6 +16,7 @@ class calculator extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.clear = this.clear.bind(this);
+    this.calcResult = this.calcResult.bind(this);
   }
 
 
@@ -74,6 +75,14 @@ class calculator extends React.Component {
     this.setState(newState)
   }
 
+  calcResult() {
+    const newState = { ...this.state };
+    let newVal = eval(newState.displayValue);
+    newVal = parseFloat(newVal.toFixed(4))
+    newState.displayValue = `${newVal}`;
+    this.setState(newState);
+  }
+
 
   clear() {
     this.setState({displayValue: '' })
@@ -108,8 +117,8 @@ class calculator extends React.Component {
         <ValueBtn handleClick={this.handleClick} parentStyle={styles.valueBtn} value={'.'}/>
         
         <ValueBtn handleClick={this.clear} parentStyle={styles.clearBtn} value={'AC'}/>
-
-        <ValueBtn parentStyle={styles.resultContainer} value={'='}/>
+        
+        <ValueBtn handleClick={this.calcResult} parentStyle={styles.resultContainer} value={'='}/>
 
       </section>
     );
