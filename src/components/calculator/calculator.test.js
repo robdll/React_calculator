@@ -55,5 +55,13 @@ it('replace operator if already there', () => {
 });
 
 
-
+it('Do not allow double dots in values', () => {
+  const wrapper = mount(<Calculator />);
+  wrapper.find('[value="2"]').simulate("click");
+  wrapper.find('[value="."]').simulate("click");
+  wrapper.find('[value="2"]').simulate("click");
+  wrapper.find('[value="."]').simulate("click");
+  wrapper.find('[value="2"]').simulate("click");
+  expect(wrapper.state()).toMatchObject({displayValue: '2.22' });
+});
 

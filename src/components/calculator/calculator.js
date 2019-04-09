@@ -26,20 +26,41 @@ class calculator extends React.Component {
   handleClick(value) {
     const newState = { ...this.state };
     let currentValue = this.state.displayValue;
-    
+
+    if(value === '.') {
+      const firstValueWithoutDotRegex = /^[-+]?(\d+)$/
+      const secondValueWithoutDotRegex = /^(\d+(\.\d+)?)[*/+-][-+]?(\d+)$/
+      const firstValueWithoutDot = firstValueWithoutDotRegex.test(currentValue);
+      const secondValueWithoutDot = secondValueWithoutDotRegex.test(currentValue);
+      const waitingValueRegex = /^(\d+(\.\d+)?)[*/+-][-+]?$/;
+      const waitingValue = waitingValueRegex.test(currentValue);
+       if(firstValueWithoutDot || secondValueWithoutDot) {
+        newState.displayValue += value;
+        this.setState(newState)
+        return
+      }
+      if(currentValue === '' || waitingValue) {
+        newState.displayValue += `0${value}`;
+        this.setState(newState)
+        return
+      }
+      //ignore otherwise
+      return
+    }
+
     if(this.isOperator(value)) {
+      const hasFirstValueRegex = /^[-+]?(\d+(\.\d+)?)$/;
+      const hasFirstValue = hasFirstValueRegex.test(currentValue);
+      const hasFirstValueAndOperatorRegex = /^(\d+(\.\d+)?)[*/+-]$/;
+      const hasFirstValueAndOperator = hasFirstValueAndOperatorRegex.test(currentValue);
       //append if does not exist
-      const regexFirstValue = /^[-+]?(\d+(\.\d+)?)$/;
-      const hasFirstValueOnly = regexFirstValue.test(currentValue);
-      if(hasFirstValueOnly) {
+      if(hasFirstValue) {
         newState.displayValue += value;
         this.setState(newState)
         return
       }
       //replace if exists
-      const regexFirstValueAndOperator = /^(\d+(\.\d+)?)[*/+-]$/;
-      const hasOperator = regexFirstValueAndOperator.test(currentValue);
-      if(hasOperator) {
+      if(hasFirstValueAndOperator) {
         currentValue = currentValue.replace(/.$/, value)
         newState.displayValue = currentValue;
         this.setState(newState)
