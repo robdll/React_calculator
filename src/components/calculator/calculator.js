@@ -18,10 +18,39 @@ class calculator extends React.Component {
     this.clear = this.clear.bind(this);
   }
 
+
+  isOperator(value) {
+    return ['+', '*', '/', '-'].find( o => o === value);
+  }
+
   handleClick(value) {
     const newState = { ...this.state };
+    let currentValue = this.state.displayValue;
+    
+    if(this.isOperator(value)) {
+      //append if does not exist
+      const regexFirstValue = /^[-+]?(\d+(\.\d+)?)$/;
+      const hasFirstValueOnly = regexFirstValue.test(currentValue);
+      if(hasFirstValueOnly) {
+        newState.displayValue += value;
+        this.setState(newState)
+        return
+      }
+      //replace if exists
+      const regexFirstValueAndOperator = /^(\d+(\.\d+)?)[*/+-]$/;
+      const hasOperator = regexFirstValueAndOperator.test(currentValue);
+      if(hasOperator) {
+        currentValue = currentValue.replace(/.$/, value)
+        newState.displayValue = currentValue;
+        this.setState(newState)
+        return
+      }
+      //ignore otherwise
+      return
+    }
+
     newState.displayValue += value;
-    this.setState({displayValue: value})
+    this.setState(newState)
   }
 
 

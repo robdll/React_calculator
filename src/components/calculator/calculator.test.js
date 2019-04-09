@@ -46,4 +46,14 @@ it('clear display on AC click', () => {
 });
 
 
+it('replace operator if already there', () => {
+  const wrapper = mount(<Calculator />);
+  wrapper.find('[value="2"]').simulate("click");
+  wrapper.find('[value="*"]').simulate("click");
+  wrapper.find('[value="+"]').simulate("click");
+  expect(wrapper.state()).toMatchObject({displayValue: '2+' });
+});
+
+
+
 
