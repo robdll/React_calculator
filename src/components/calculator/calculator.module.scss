@@ -8,6 +8,14 @@
     grid-gap: 5px;
 }
 
+.displayContainer > div{
+    display: flex;
+    font-size: 3em;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
 .displayContainer {
     grid-column: 1 / -1;
     background: gray;

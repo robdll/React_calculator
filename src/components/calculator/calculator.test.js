@@ -26,9 +26,16 @@ it('Display is empty', () => {
 });
 
 it('buttons update display', () => {
-  const wrapper = shallow(<Calculator />);
+  const wrapper = mount(<Calculator />);
   wrapper.find('[value="3"]').simulate("click");
-  expect(wrapper.state().displayValue).toBe('3');
+  expect(wrapper.state()).toMatchObject({displayValue: '3' });
+});
+
+
+it('buttons update display', () => {
+  const wrapper = mount(<Calculator />);
+  wrapper.find('[value="3"]').simulate("click");
+  expect(wrapper.state()).toMatchObject({displayValue: '3' });
 });
 
 
