@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Demo available [here](https://github.com/koop4/React_calculator): 
+Demo available [here](https://koop4.github.io/React_calculator/): 
 
 ## Available Scripts
 
