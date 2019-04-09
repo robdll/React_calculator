@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import styles from "./calculator.module.scss";
@@ -6,13 +6,23 @@ import styles from "./calculator.module.scss";
 import Display from '../display/display';
 import ValueBtn from '../valueBtn/valueBtn';
 
-const calculator = () => {
 
-  const display = <div className={styles.displayContainer} >
-      <Display value={''} />
-    </div>;
 
-  return (
+class calculator extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayValue: ''
+    }
+  }
+
+  render() { 
+
+    const display = <div className={styles.displayContainer} >
+        <Display value={''} />
+      </div>;
+    return (
       <section className={styles.calculator}>
 
         {display}
@@ -21,7 +31,6 @@ const calculator = () => {
         <div className={styles.operatorBtn}><ValueBtn value={'-'}/></div>
         <div className={styles.operatorBtn}><ValueBtn value={'*'}/></div>
         <div className={styles.operatorBtn}><ValueBtn value={'/'}/></div>
-
 
         <div className={styles.valueBtn}><ValueBtn value={'1'}/></div>
         <div className={styles.valueBtn}><ValueBtn value={'2'}/></div>
@@ -42,7 +51,8 @@ const calculator = () => {
 
         
       </section>
-  );
+    );
+  }
 };
 
 calculator.defaultProps = {};
